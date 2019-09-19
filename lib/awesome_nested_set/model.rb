@@ -191,7 +191,7 @@ module CollectiveIdea #:nodoc:
           @right_most_bound ||= begin
             return 0 if right_most_node.nil?
 
-            right_most_node.lock!
+            #right_most_node.lock!
             right_most_node[right_column_name] || 0
           end
         end
@@ -256,7 +256,7 @@ module CollectiveIdea #:nodoc:
         def reload_nested_set
           reload(
             :select => "#{quoted_left_column_full_name}, #{quoted_right_column_full_name}, #{quoted_parent_column_full_name}",
-            :lock => true
+            :lock => false
           )
         end
 
